@@ -78,7 +78,7 @@ class LinRegModel:
         if filename is None:
             if not os.path.exists('src/training/temp'):
                 os.mkdir('src/training/temp')
-            filename = f'src/training/temp/ln-calhous-{str(datetime.today())}.pkl'
+            filename = f'src/training/temp/ln-calhous-{str(datetime.today())}.pkl'.replace(' ','_')
 
         with open(filename,'wb') as file:
             pickle.dump(self.model,file)
