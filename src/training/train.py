@@ -1,3 +1,4 @@
+import logging
 import os
 import pickle
 from datetime import datetime
@@ -11,6 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
+logging.basicConfig(level=logging.INFO)
 
 class LinRegModel:
     '''
