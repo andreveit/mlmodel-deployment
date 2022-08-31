@@ -8,6 +8,7 @@ __pycache__/
 
 # Other stuff
 notes.txt
+temp/
 
 # Distribution / packaging
 .Python
