@@ -7,6 +7,12 @@ from botocore.exceptions import ClientError
 logging.basicConfig(level=logging.INFO)
 
 
+def get_latest_model(filename):
+        dirs = os.listdir(filename)
+        dirs.sort()
+        return dirs[-1]
+
+
 class S3Manager:
     '''
     Classe responsável por gerenciar recursos no S3.
@@ -55,12 +61,13 @@ class S3Manager:
         logging.info(f'Bucket already exists: {self.bucket_name}')
 
 
-
-    def upload_file(self, file_name):
+    def upload_file(self, dir_name):
         """
         Upload file to S3 bucket
         """
-        object_name = os.path.basename(file_name)
+        object_name = get_latest_model(dir_name)
+        file_name = os.path.join(dir_name, object_name)
+        # object_name = os.path.basename(file_name)
 
         try:
             response = self.s3_client.upload_file(file_name, self.bucket_name, object_name)
@@ -69,7 +76,7 @@ class S3Manager:
             return False
         logging.info(f'Model {object_name} was uploaded to S3.')
         return True
-        
+
 
     def delete(self):
         self.s3_client.delete_bucket(Bucket=self.bucket_name)
