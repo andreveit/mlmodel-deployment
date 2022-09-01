@@ -30,10 +30,10 @@ class LinRegModel:
         '''
         Pipeline de treinamento do modelo
         '''
-        print('Training model...')
+        logging.info('Training model...')
         X_train, X_test, y_train, y_test = self.load_data()
         self.fit(X_train, y_train)
-        print('Done!')
+        logging.info('Done!')
         self.evaluate(X_test, y_test)
         self.save()
 
@@ -67,10 +67,10 @@ class LinRegModel:
 
     def evaluate(self, X_test, y_test):
         '''
-        Print MSE
+        Log MSE
         '''
         error = mean_squared_error(self.model.predict(X_test.to_numpy().reshape(-1,1)), y_test)
-        print(f'MSE: {error:.3f}')
+        logging.info(f'MSE: {error:.3f}')
 
 
     def save(self, filename = None):
@@ -85,12 +85,5 @@ class LinRegModel:
         with open(filename,'wb') as file:
             pickle.dump(self.model,file)
 
-    
-        
-            
-
-
-if __name__ == '__main__':
-    lnmodel = LinRegModel().train_model()
 
 
