@@ -74,7 +74,7 @@ class S3Manager:
         except ClientError as e:
             logging.error(e)
             return False
-        logging.info(f'Model {object_name} was uploaded to S3.')
+        logging.info(f'Object {object_name} was uploaded to S3.')
         return True
 
 
