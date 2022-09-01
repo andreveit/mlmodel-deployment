@@ -25,4 +25,23 @@ Fazer o deploy de um modelo simples de regressão linear, hospedando o código e
 
 ## Utilização
 
-<br>
+
+1- Definição das variáveis de ambiente:
+
+```shell
+ $ export AWS_SECRET_ACCESS_KEY=<user-aws-secret-key>
+ $ export AWS_ACCESS_KEY_ID=<user-aws-access-key-id>
+ $ export ARTIFACT_BUCKET_NAME=<nome-do-bucket-de-artefatos>
+```
+
+
+ 2- Instalação de dependências
+ ```shell
+ $ make install
+```
+
+
+ 2- Execução do pipeline de treinamento do modelo
+ ```shell
+ $ make training-pipeline
+```
