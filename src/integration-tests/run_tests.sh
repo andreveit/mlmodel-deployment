@@ -36,5 +36,6 @@ fi
 echo -e "\n\nAll good\n"
 
 # Clean up
+unset S3_ENDPOINT
 docker-compose -f src/deployment/docker-compose.yaml down
 docker rmi -f $(docker images -q)
