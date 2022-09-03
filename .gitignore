@@ -10,6 +10,12 @@ __pycache__/
 notes.txt
 temp/
 
+# serverless stuff
+.serverless
+*.pyc
+*.pyo
+
+
 # Distribution / packaging
 .Python
 build/
