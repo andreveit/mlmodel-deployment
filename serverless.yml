@@ -1,0 +1,36 @@
+service: deployment
+
+frameworkVersion: '3'
+
+
+provider:
+  name: aws
+  runtime: python3.8
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 's3:ListBucket'
+          Resource: '*'
+        - Effect: Allow
+          Action:
+            - 's3:GetObject'
+            - 's3:PutObject'
+          Resource:
+            - '*'
+  ecr:
+    images:
+      baseimage:
+        uri: ${env:ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/lambdas-repo:latest
+functions:
+  modelScorer:
+    image: baseimage
+    memorySize: 3008
+    timeout: 120
+    events:
+      - schedule: cron(0 12 ? * MON-FRI *)
+    environment:
+      ARTIFACT_BUCKET_NAME: ${env:ARTIFACT_BUCKET_NAME}
+      INFERENCE_BUCKET_NAME: ${env:INFERENCE_BUCKET_NAME}
+
+      
