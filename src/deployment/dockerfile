@@ -9,6 +9,6 @@ RUN  pip3 install awswrangler \
                     --target "${LAMBDA_TASK_ROOT}"
 
 CMD [ "score.lambda_handler" ]
-# CMD ["tail", "-f", "/dev/null"]
+
 
 

@@ -23,7 +23,13 @@ class S3Manager:
 
     def __init__(self, bucket_name = 'models-artifactstore-andreveit'):
         self.bucket_name = bucket_name
-        self.s3_client = boto3.client('s3')
+
+        # Se execucao de teste, seta cliente para url de teste
+        S3_ENDPOINT = os.getenv('S3_ENDPOINT')
+        if S3_ENDPOINT is not None:
+            self.s3_client = boto3.client('s3', endpoint_url=S3_ENDPOINT)
+        else:
+            self.s3_client = boto3.client('s3')
 
 
     def check_if_exists(self):

@@ -1,4 +1,5 @@
 import logging
+import os
 import pickle
 import tempfile
 from abc import ABC, abstractmethod
@@ -11,6 +12,14 @@ logger.setLevel(logging.INFO)
 def remove_pref_suf(s):
     return '/'.join([i for i in s.split('/') if i != ""])
 
+def get_s3_client():
+    # Se execucao de teste, seta cliente para url de teste
+    S3_ENDPOINT = os.getenv('S3_ENDPOINT')
+    if S3_ENDPOINT is not None:
+        return boto3.client('s3', endpoint_url=S3_ENDPOINT)
+    else:
+        return boto3.client('s3')
+
 
 class FilesLister:
     '''
@@ -19,7 +28,7 @@ class FilesLister:
     def __init__(self, bucket: str, s3_client = None):
         self.bucket = bucket
         if s3_client is None:
-            s3_client = boto3.client('s3')
+            s3_client = get_s3_client()
         self.s3_client = s3_client
 
 
@@ -99,7 +108,7 @@ class ModelLoaderS3(ModelLoaderBase):
     '''
     def __init__(self, bucket):
         self.bucket = bucket
-        self.s3_client = boto3.client('s3')
+        self.s3_client = get_s3_client()
 
 
     def get_model(self, strategy: str = 'latest'):
