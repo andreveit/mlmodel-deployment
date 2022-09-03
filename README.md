@@ -32,6 +32,13 @@ Fazer o deploy de um modelo simples de regressão linear, hospedando o código e
 1- Definição das variáveis de ambiente:
 
 ```shell
+ $ export ACCOUNT_ID=<user-aws-secret-key>
+```
+ou 
+```shell
+ $ export ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+ ```
+ ```shell
  $ export AWS_SECRET_ACCESS_KEY=<user-aws-secret-key>
  $ export AWS_ACCESS_KEY_ID=<user-aws-access-key-id>
  $ export ARTIFACT_BUCKET_NAME=<nome-do-bucket-de-artefatos>
@@ -44,7 +51,7 @@ Fazer o deploy de um modelo simples de regressão linear, hospedando o código e
  $ make install
 ```
 
- 3- Cria infraestrutura para inferência
+ 3- Crição da infraestrutura para inferência
  ```shell
  $ make inference-infra
 ```
@@ -52,6 +59,11 @@ Fazer o deploy de um modelo simples de regressão linear, hospedando o código e
  4- Execução do pipeline de treinamento do modelo
  ```shell
  $ make training-pipeline
+```
+
+ 5- Deploy da função lambda
+ ```shell
+ $ make deploy
 ```
 
 <br>
