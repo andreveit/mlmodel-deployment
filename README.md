@@ -25,6 +25,9 @@ Fazer o deploy de um modelo simples de regressão linear, hospedando o código e
 
 ## Utilização
 
+<br>
+
+### Deploy do modelo
 
 1- Definição das variáveis de ambiente:
 
@@ -49,4 +52,25 @@ Fazer o deploy de um modelo simples de regressão linear, hospedando o código e
  4- Execução do pipeline de treinamento do modelo
  ```shell
  $ make training-pipeline
+```
+
+<br>
+
+### Execução dos Testes
+
+1- Definição das variáveis de ambiente:
+
+```shell
+ $ export ARTIFACT_BUCKET_NAME=<nome-do-bucket-de-artefatos>
+ $ export INFERENCE_BUCKET_NAME=<nome-do-bucket-de-inferencia>
+```
+
+ 2- Instalação de dependências
+ ```shell
+ $ make install
+```
+
+ 3- Execução dos testes
+ ```shell
+ $ make tests
 ```
