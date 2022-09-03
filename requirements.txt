@@ -1,4 +1,5 @@
 boto3
+awswrangler
 matplotlib
 pandas
 scikit-learn
