@@ -21,7 +21,7 @@ make training-pipeline
 
 # Invoke function
 echo -e "\nRunning scoring script"
-curl -XPOST "http://localhost:8080/2015-03-31/functions/function/invocations" -d '{}'
+python src/integration-tests/test_lambda.py
 
 # Get logs
 echo ""
