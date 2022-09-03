@@ -9,7 +9,7 @@ from training.train import LinRegModel
 from helper_functions import tempdir_context
 
 
-TEMPFILE = 'data.pkl'
+TEMPFILE = 'data.parquet'
 
 inferenct_bucket_name = os.getenv('INFERENCE_BUCKET_NAME')
 
@@ -24,7 +24,7 @@ with tempdir_context('temp/') as tempdir:
     # Obtem os dados para inferencia
     lnmodel = LinRegModel()
     _, X_test, _, _ = lnmodel.load_data()
-    X_test.to_pickle(tempdir + TEMPFILE)
+    X_test.to_frame().to_parquet(tempdir + TEMPFILE)
 
     # Sobe dados de inferencia para o bucket
     s3_manager.upload_file(tempdir)
