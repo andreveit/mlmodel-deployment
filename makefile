@@ -15,3 +15,7 @@ inference-infra:
 
 training-pipeline:
 	python src/training/training_pipeline.py
+
+deploy:
+	bash src/deployment/push_img.sh
+	sls deploy
