@@ -1,0 +1,7 @@
+{
+  "name": "deployment",
+  "version": "1.0.0",
+  "description": "Simples deploy de uma modelo de regressao linear",
+  "author": "",
+  "license": "MIT"
+}
