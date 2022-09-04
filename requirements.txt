@@ -1,0 +1,10 @@
+boto3
+awscli
+awswrangler
+matplotlib
+pandas
+scikit-learn
+pytest
+pytest-cov
+
+

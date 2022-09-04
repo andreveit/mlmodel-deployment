@@ -6,6 +6,16 @@ __pycache__/
 # C extensions
 *.so
 
+# Other stuff
+notes.txt
+temp/
+
+# serverless stuff
+.serverless
+*.pyc
+*.pyo
+
+
 # Distribution / packaging
 .Python
 build/
