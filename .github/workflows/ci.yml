@@ -37,23 +37,3 @@ jobs:
         AWS_REGION: sa-east-1
       run: |
         make tests
-
-
-
-
-# Build-Push
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-
-      - name: Build, tag, and push image to Amazon ECR
-        id: build-image-step
-        working-directory: "06-best-practices/code"
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ steps.tf-apply.outputs.ecr_repo }}
-          IMAGE_TAG: "latest"   # ${{ github.sha }}
-        run: |
-          docker build -t ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG} .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image_uri::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
