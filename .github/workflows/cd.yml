@@ -23,9 +23,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: "us-east-1"
-          ARTIFACT_BUCKET_NAME: ${{ secrets.ARTIFACT_BUCKET_NAME }}
-          INFERENCE_BUCKET_NAME: ${{ secrets.INFERENCE_BUCKET_NAME }}
-          ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
           
 # Build-Push
       - name: Login to Amazon ECR
@@ -50,5 +47,9 @@ jobs:
       
       - name: Serverless
         uses: serverless/github-action@v1.53.0
+        env:
+          ARTIFACT_BUCKET_NAME: ${{ secrets.ARTIFACT_BUCKET_NAME }}
+          INFERENCE_BUCKET_NAME: ${{ secrets.INFERENCE_BUCKET_NAME }}
+          ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
         with:
           args: deploy
