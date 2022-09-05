@@ -19,7 +19,7 @@ A infraestrutura foi organizada em 3 pilares, a ideia foi manter estes 3 o mais 
 
 ### Realização das predições -> Funcão Lambda
 
->A criação da função lambda para realização das predições é construida utilizando Serverless Framework 
+>A criação da função lambda para realização das predições é feita utilizando Serverless Framework 
 
 
 <br>
