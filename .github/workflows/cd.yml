@@ -46,7 +46,7 @@ jobs:
         run: npm install
       
       - name: Serverless
-        uses: serverless/github-action@v1.53.0
+        uses: serverless/github-action@v3.1
         env:
           ARTIFACT_BUCKET_NAME: ${{ secrets.ARTIFACT_BUCKET_NAME }}
           INFERENCE_BUCKET_NAME: ${{ secrets.INFERENCE_BUCKET_NAME }}
